@@ -3,8 +3,8 @@ using namespace std;
 #define ll long long    
 
 class seg_tree{
-    vector<int>seg;
 public:
+    vector<int>seg;
     seg_tree(int n){
         seg.resize(4*n+1);
     }
