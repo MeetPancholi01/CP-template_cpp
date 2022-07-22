@@ -10,7 +10,8 @@ typedef tree <ll,null_type,greater_equal<ll>,rb_tree_tag,tree_order_statistics_n
 
 
 int main(){
-
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     //code here
     return 0;
 }
