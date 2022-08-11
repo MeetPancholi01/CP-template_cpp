@@ -21,6 +21,21 @@ ll fastExpo(ll base, ll expo, ll mod){
     }
     return ans;
 }
+ll fact(ll n){
+    ll ans = 1;
+    for(int i=1;i<=n;i++){
+        ans = (ans*1ll*i);
+    }
+    return ans;
+}
+
+ll fact_mod(ll n,ll mod){
+    ll ans = 1;
+    for(int i=1;i<=n;i++){
+        ans = (ans*1ll*i)%mod;
+    }
+    return ans;
+}
 
 int main(){
     ios_base::sync_with_stdio(false);
