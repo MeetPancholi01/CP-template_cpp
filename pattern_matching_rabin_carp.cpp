@@ -1,3 +1,4 @@
+// s is a pattern && t is a text here
 vector<int> rabin_karp(string const& s, string const& t) {
     const int p = 31; 
     const int m = 1e9 + 9;
