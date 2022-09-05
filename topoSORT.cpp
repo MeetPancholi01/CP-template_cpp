@@ -8,3 +8,14 @@ void topoSort(ll node,stack<ll>&st,vector<vector<ll>>&adj){
     }
     st.push(node);
 }
+stack<ll>st;
+for(int i=1;i<=n;i++){
+    if(!vi[i]){
+        topoSort(i,st,adj);
+    }
+}
+vector<ll>ans;
+while(!st.empty()){
+    ans.pb(st.top());
+    st.pop();
+}
