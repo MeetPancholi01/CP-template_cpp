@@ -50,6 +50,23 @@ void print_vec(vector<ll>&arr){
     }
 }
 
+ll kadane(vector<ll>&arr){
+    ll csum = arr[0];
+    ll osum = arr[0];
+    for(int i=1;i<arr.size();i++){
+        if(csum > 0){
+            csum += arr[i];
+        }
+        else{
+            csum = arr[i];
+        }
+        if(csum > osum){
+            osum = csum;
+        }
+    }
+    return osum;
+}
+
 int main(){
     #ifndef ONLINE_JUDGE
     freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
