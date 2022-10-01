@@ -67,6 +67,34 @@ ll kadane(vector<ll>&arr){
     return osum;
 }
 
+void leftRotate_arr(ll arr[],ll n,ll k){     // [1,2,3] -> [2,3,1]
+    k%=n;
+    reverse(arr,arr+k);
+    reverse(arr+k,arr+n);
+    reverse(arr,arr+n);
+}
+
+void rightRotate_arr(ll arr[],ll n,ll k){        // [1,2,3] -> [3,1,2]
+    k%=n;
+    reverse(arr,arr+n);
+    reverse(arr,arr+k);
+    reverse(arr+k,arr+n);
+}
+
+void leftRotate_vec(vector<ll>&arr,ll n,ll k){
+    k%=n;
+    reverse(arr.begin(),arr.begin()+k);
+    reverse(arr.begin()+k,arr.end());
+    reverse(arr.begin(),arr.end());
+}
+
+void rightRotate_vec(vector<ll>&arr,ll n,ll k){
+    k%=n;
+    reverse(arr.begin(),arr.end());
+    reverse(arr.begin(),arr.begin()+k);
+    reverse(arr.begin()+k,arr.end());
+}
+
 int main(){
     #ifndef ONLINE_JUDGE
     freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
