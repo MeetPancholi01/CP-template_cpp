@@ -67,6 +67,20 @@ ll kadane(vector<ll>&arr){
     return osum;
 }
 
+// max subarray sum of every window size
+vector<ll> subsum(vector<ll>&arr){
+    ll n = arr.size();
+    vector<ll>ans(n+1,INT_MIN);
+    for(int i=0;i<n;i++){
+        ll temp = 0;
+        for(int j=i;j<n;j++){
+            temp += arr[j];
+            ans[j-i+1] = max(ans[j-i+1],temp);
+        }
+    }
+    return ans;
+}
+
 void leftRotate_arr(ll arr[],ll n,ll k){     // [1,2,3] -> [2,3,1]
     k%=n;
     reverse(arr,arr+k);
