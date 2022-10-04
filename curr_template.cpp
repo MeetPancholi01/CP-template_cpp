@@ -81,6 +81,42 @@ vector<ll> subsum(vector<ll>&arr){
     return ans;
 }
 
+string mult(string s1, string s2){
+    int n1 = s1.size();
+    int n2 = s2.size();
+    vector<int>res(n1+n2,0);
+    int i = n2-1;
+    int pf = 0;
+    while(i >= 0){
+        int ival = s2[i]-'0';
+        i--;
+        int j=n1-1;
+        int k = res.size()-1-pf;
+        int carry = 0;
+        while(j >= 0 || carry != 0){
+            int jval = (j>=0)? s1[j]-'0':0;
+            j--;
+            int prod = ival*jval+carry+res[k];
+            res[k] = prod%10;
+            carry = prod/10;
+            k--;
+        }
+        pf++;
+    }
+    string ans = "";
+    ll ind = 0;
+    for(int i=0;i<res.size();i++){
+        if(res[i] != 0){
+            ind = i;
+            break;
+        }
+    }
+    for(int i=ind;i<res.size();i++){
+        ans += to_string(res[i]);
+    }
+    return ans;
+}
+
 void leftRotate_arr(ll arr[],ll n,ll k){     // [1,2,3] -> [2,3,1]
     k%=n;
     reverse(arr,arr+k);
