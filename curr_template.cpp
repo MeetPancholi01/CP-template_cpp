@@ -81,6 +81,24 @@ vector<ll> subsum(vector<ll>&arr){
     return ans;
 }
 
+string add(string s1,string s2){
+    string res = "";
+    int i=s1.size()-1;
+    int j = s2.size()-1;
+    int carry = 0;
+    while(i >= 0 || j >= 0 || carry != 0){
+        int ival = (i >= 0)?s1[i]-'0':0;
+        int jval = (j >= 0)?s2[j]-'0':0;
+        i--;
+        j--;
+        int sum = ival+jval+carry;
+        res.pb(sum%10+'0');
+        carry = sum/10;
+    }
+    reverse(all(res));
+    return res;
+}
+
 string mult(string s1, string s2){
     int n1 = s1.size();
     int n2 = s2.size();
