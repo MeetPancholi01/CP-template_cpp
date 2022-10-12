@@ -163,6 +163,21 @@ void rightRotate_vec(vector<ll>&arr,ll n,ll k){
     reverse(arr.begin()+k,arr.end());
 }
 
+string dtb(ll ln,ll num){
+    string ans(32,'0');
+    for(int i=0;i<32;i++){
+        if((1 << i)&num){
+            ans[32-i-1] = '1';
+        }
+        else{
+            ans[32-i-1] = '0';
+        }
+    }
+
+    return ans.substr(32-ln,ln);
+
+}
+
 int main(){
     #ifndef ONLINE_JUDGE
     freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
