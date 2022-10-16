@@ -44,6 +44,28 @@ void print_arr(ll arr[],ll n){
     }
 }
 
+template <size_t rows, size_t cols>
+void print_arr2(ll (&array)[rows][cols])
+{
+    // cout << __func__ << endl;
+    for (size_t i = 0; i < rows; ++i)
+    {
+        for (size_t j = 0; j < cols; ++j)
+            cout << array[i][j] << " ";
+        cout << endl;
+    }
+
+}
+
+void print_vec2(vector<vector<ll>>&arr){
+    for(int i=0;i<arr.size();i++){
+        for(int j=0;j<arr[i].size();j++){
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
 void print_vec(vector<ll>&arr){
     for(int i=0;i<arr.size();i++){
         cout << arr[i] << " ";
