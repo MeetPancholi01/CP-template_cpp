@@ -38,6 +38,27 @@ ll fact_mod(ll n,ll mod){
     return ans;
 }
 
+ll MMI(ll n, ll mod)
+{
+    return fastExpo(n,mod-2,mod);
+}
+
+
+ll nCr(ll n, ll r, ll mod)
+{
+    // If n<r, then nCr should return 0
+    if (n < r)
+        return 0;
+    if (r == 0)
+        return 1;
+    ll fac[n + 1];
+    fac[0] = 1;
+    for (int i = 1; i <= n; i++){
+        fac[i] = (fac[i - 1]*i)%mod;
+    }
+    return (((fac[n]*MMI(fac[r],mod))%mod)*(MMI(fac[n-r],mod))%mod)%mod;
+}
+
 void print_arr(ll arr[],ll n){
     for(int i=0;i<n;i++){
         cout << arr[i] << " ";
