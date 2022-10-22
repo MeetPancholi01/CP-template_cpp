@@ -59,6 +59,45 @@ ll nCr(ll n, ll r, ll mod)
     return (((fac[n]*MMI(fac[r],mod))%mod)*(MMI(fac[n-r],mod))%mod)%mod;
 }
 
+vector<vector<ll>> diagonal_elements(vector<vector<ll>>&arr){               // diagonal of the shape ----> / 
+    ll r,c;                                        
+    ll s_x,s_y,e_x,e_y;
+    vector<vector<ll>>diag;
+    ll n = arr.size();
+    ll m = arr[0].size();
+    for(ll tot=1;tot<(n+m);tot++){
+        r = min(tot-1,n-1);
+        c = min(tot-1,m-1);
+        s_x = r;
+        e_y = c;
+        if(tot-1 > n-1){
+            s_y++;
+            s_y = min(s_y,m-1);
+        }
+        else{
+            s_y = 0;
+        }
+        if(tot-1 > m-1){
+            e_x++;
+            e_x = min(e_x,n-1);
+        }
+        else{
+            e_x = 0;
+        }
+        // cout << s_x << " " <<  s_y << endl;
+        ll start = s_y; 
+        vector<ll>dg;
+        while(s_x >= 0 and start <= e_y){
+            // cout << s_x << " " << s_y << endl;
+            dg.pb(arr[s_x][start]);
+            s_x--;
+            start++;
+        }
+        diag.pb(dg);
+    }
+    return diag;
+}
+
 void print_arr(ll arr[],ll n){
     for(int i=0;i<n;i++){
         cout << arr[i] << " ";
