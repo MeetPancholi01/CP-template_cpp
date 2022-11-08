@@ -67,3 +67,47 @@ vector<ll> primes_in_range(ll l,ll r){
     }
     return res;
 }
+// SIEVE APPLICATIONS ------------------------------------------------------------------------------------------------------------------------
+pair<vector<ll>,vector<ll>> sieve_lphp(ll N){
+    vector<bool>isPrime(N,1);
+    vector<ll>lp(N,0),hp(N,0);
+    isPrime[0] = false;
+    isPrime[1] = false;
+    for(int i=2;i<N;i++){
+        if(isPrime[i]){
+            for(int j=2*i;j<N;j+=i){
+                isPrime[j] = false;
+                hp[j] = i;
+                if(lp[j] == 0) lp[j] = i;
+            }
+        }
+    }
+    pair<vector<ll>,vector<ll>>ans;
+    ans.first = lp;
+    ans.second = hp;
+    return ans;
+}
+
+vector<ll> prime_fact(ll num){
+    vector<ll>ans;
+    pair<vector<ll>,vector<ll>>lphp = sieve_lphp(num+10);
+    vector<ll> hp = lphp.second;
+    while(num > 1){
+        ll pf = hp[num];
+        while(num%pf == 0){
+            num /= pf;
+            ans.pb(pf);
+        }
+    }
+    return ans;
+}
+
+vector<vector<ll>> divisors(ll N){
+    vector<vector<ll>>ans(N);
+    for(int i=1;i<N;i++){
+        for(int j=i;j<N;j+=i){
+            ans[j].pb(i);
+        }
+    }
+    return ans;
+}
