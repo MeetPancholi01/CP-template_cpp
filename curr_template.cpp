@@ -59,6 +59,29 @@ ll nCr(ll n, ll r, ll mod)
     return (((fac[n]*MMI(fac[r],mod))%mod)*(MMI(fac[n-r],mod))%mod)%mod;
 }
 
+pair<vector<ll>,vector<ll>> hashit(string &s){
+    ll n=s.size();
+    vector<ll>pref(n);
+    ll p = 31ll;
+    vector<ll>pw(n);
+    ll mod = 1e9+7;
+    ll curr_pow = 1;
+    for(int i=0;i<n;i++){
+        pw[i] = curr_pow;
+        if(i == 0){
+            pref[i] = s[i]-'a'+1;
+        }
+        else{
+            pref[i] = pref[i-1] + ((s[i]-'a'+1)*(curr_pow))%mod;
+        }
+        curr_pow = (curr_pow*p)%mod;
+    }
+    pair<vector<ll>,vector<ll>>ans;
+    ans.first = pref;
+    ans.second = pw;
+    return ans;
+}
+
 vector<vector<ll>> diagonal_elements(vector<vector<ll>>&arr){               // diagonal of the shape ----> / 
     ll r,c;                                        
     ll s_x,s_y,e_x,e_y;
