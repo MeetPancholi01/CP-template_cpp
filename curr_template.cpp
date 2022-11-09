@@ -127,17 +127,13 @@ void print_arr(ll arr[],ll n){
     }
 }
 
-template <size_t rows, size_t cols>
-void print_arr2(ll (&array)[rows][cols])
-{
-    // cout << __func__ << endl;
-    for (size_t i = 0; i < rows; ++i)
-    {
-        for (size_t j = 0; j < cols; ++j)
-            cout << array[i][j] << " ";
+void print_arr2(ll *arr,ll r, ll c){  // Call me like this print_arr2((ll*)arr,rows,cols);
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            cout << *(arr+i*c+j) << " ";
+        }
         cout << endl;
     }
-
 }
 
 void print_vec2(vector<vector<ll>>&arr){
