@@ -276,7 +276,22 @@ string dtb(ll ln,ll num){
     }
 
     return ans.substr(32-ln,ln);
+}
 
+vector<vector<ll>> subsets(vector<ll>&subs){
+    ll n = subs.size();
+    ll subset_ct = (1<<n);
+    vector<vector<ll>>ans;
+    for(int mask=0;mask<subset_ct;mask++){
+        vector<ll>subset;
+        for(int i=0;i<n;i++){
+            if(mask & (1<<i)){
+                subset.pb(subs[i]);
+            }
+        }
+        ans.pb(subset);
+    }
+    return ans;
 }
 
 int main(){
