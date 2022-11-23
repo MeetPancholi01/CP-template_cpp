@@ -274,8 +274,7 @@ string dtb(ll ln,ll num){
             ans[32-i-1] = '0';
         }
     }
-
-    return ans.substr(32-ln,ln);
+    return ans.substr(31-ln+1,ln);
 }
 
 vector<vector<ll>> subsets(vector<ll>&subs){
