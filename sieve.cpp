@@ -75,6 +75,8 @@ pair<vector<ll>,vector<ll>> sieve_lphp(ll N){
     isPrime[1] = false;
     for(int i=2;i<N;i++){
         if(isPrime[i]){
+            hp[i]=i;
+            lp[i]=i;
             for(int j=2*i;j<N;j+=i){
                 isPrime[j] = false;
                 hp[j] = i;
