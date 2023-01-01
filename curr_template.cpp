@@ -43,6 +43,9 @@ ll MMI(ll n, ll mod)
     return fastExpo(n,mod-2,mod);
 }
 
+ll noofbits(ll n){
+    return __builtin_popcountll(n);
+}
 
 ll nCr(ll n, ll r, ll mod)
 {
