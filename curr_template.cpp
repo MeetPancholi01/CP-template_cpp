@@ -296,6 +296,32 @@ vector<vector<ll>> subsets(vector<ll>&subs){
     return ans;
 }
 
+vector<ll> nextGreater(vector<ll>& arr, int n) {
+    stack<ll> s;   
+    vector<ll> result(n, n);
+    for (int i = 0; i < n; i++) {
+        while (!s.empty() && arr[s.top()] < arr[i]) {
+            result[s.top()] = i;    
+            s.pop();
+        }
+        s.push(i);
+    }
+    return result;
+}
+ 
+vector<ll> prevGreater(vector<ll>& arr, int n) {
+    stack<ll> s;   
+    vector<ll> result(n, -1);
+    for (int i = n - 1; i >= 0; i--) {
+        while (!s.empty() && arr[s.top()] < arr[i]) {
+            result[s.top()] = i;    
+            s.pop();
+        }
+        s.push(i);
+    }
+    return result;
+}
+
 int main(){
     #ifndef ONLINE_JUDGE
     freopen("input.txt","r",stdin); //file input.txt is opened in reading mode i.e "r"
